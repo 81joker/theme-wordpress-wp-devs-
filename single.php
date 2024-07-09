@@ -23,6 +23,10 @@
                     </div>
                 </article>
                 <?php
+                //Commnet Form
+                if (comments_open() || get_comments_number()) {
+                    comments_template();
+                }
             endwhile;
             ?>
 
