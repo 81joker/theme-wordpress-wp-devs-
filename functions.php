@@ -39,15 +39,17 @@ add_action( 'after_setup_theme', 'my_register_nav_menus' );
 /**
  * Add a sidebar.
  */
-function wpdocs_theme_slug_widgets_init() {
-	register_sidebar( array(
-		'name'          => __( 'Main Sidebar', 'textdomain' ),
-		'id'            => 'sidebar-1',
-		'description'   => __( 'Widgets in this area will be shown on all posts and pages.', 'textdomain' ),
-		'before_widget' => '<li id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</li>',
-		'before_title'  => '<h2 class="widgettitle">',
-		'after_title'   => '</h2>',
-	) );
+add_action( 'widgets_init', 'wpdevs_sidebars' );
+function wpdevs_sidebars(){
+    register_sidebar(
+        array(
+            'name'  => 'Blog Sidebar',
+            'id'    => 'sidebar-blog',
+            'description'   => 'This is the Blog Sidebar. You can add your widgets here.',
+            'before_widget' => '<div class="widget-wrapper">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h4 class="widget-title">',
+            'after_title'   => '</h4>'
+        )
+    );
 }
-add_action( 'widgets_init', 'wpdocs_theme_slug_widgets_init' );
